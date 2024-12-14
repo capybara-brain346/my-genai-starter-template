@@ -1,15 +1,12 @@
 import google.generativeai as genai
 from typing import Optional, List, Dict
 from dotenv import load_dotenv
-import os
 
 load_dotenv()
 
 
 class GeminiUtils:
     def __init__(self):
-        api_key = os.getenv("GOOGLE_API_KEY")
-        genai.configure(api_key=api_key)
         self.model = genai.GenerativeModel("gemini-pro")
 
     async def generate_text(

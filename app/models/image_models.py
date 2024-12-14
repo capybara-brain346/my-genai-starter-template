@@ -4,15 +4,12 @@ from typing import Optional, List, Union, BinaryIO
 import base64
 from io import BytesIO
 from dotenv import load_dotenv
-import os
 
 load_dotenv()
 
 
 class GeminiVisionUtils:
     def __init__(self, api_key: str):
-        api_key = os.getenv("GOOGLE_API_KEY")
-        genai.configure(api_key=api_key)
         self.model = genai.GenerativeModel("gemini-pro-vision")
 
     async def _process_image(

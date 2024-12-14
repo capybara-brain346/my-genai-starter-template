@@ -1,4 +1,4 @@
-fastapi
+fastapi[standard]
 google-generativeai
 python-dotenv
 pydantic

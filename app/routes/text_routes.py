@@ -2,12 +2,10 @@ from fastapi import APIRouter, HTTPException
 from typing import List, Dict, Optional
 from app.models.text_models import GeminiUtils
 from pydantic import BaseModel
-import os
 
 router = APIRouter(prefix="/api/text", tags=["text"])
 
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-gemini = GeminiUtils(GOOGLE_API_KEY)
+gemini = GeminiUtils()
 
 
 class TextRequest(BaseModel):

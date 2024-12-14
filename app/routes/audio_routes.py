@@ -2,12 +2,10 @@ from fastapi import APIRouter, HTTPException, UploadFile, File, Form
 from typing import Optional
 from app.models.audio_models import GeminiAudioUtils
 from pydantic import BaseModel
-import os
 
 router = APIRouter(prefix="/api/audio", tags=["audio"])
 
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-audio = GeminiAudioUtils(GOOGLE_API_KEY)
+audio = GeminiAudioUtils()
 
 
 class AudioResponse(BaseModel):

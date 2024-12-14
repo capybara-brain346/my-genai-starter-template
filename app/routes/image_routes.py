@@ -2,12 +2,10 @@ from fastapi import APIRouter, HTTPException, UploadFile, File, Form
 from typing import List, Optional
 from app.models.image_models import GeminiVisionUtils
 from pydantic import BaseModel
-import os
 
 router = APIRouter(prefix="/api/image", tags=["image"])
 
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-vision = GeminiVisionUtils(GOOGLE_API_KEY)
+vision = GeminiVisionUtils()
 
 
 class ImageAnalysisResponse(BaseModel):

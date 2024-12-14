@@ -10,9 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class GeminiAudioUtils:
-    def __init__(self, api_key: str):
-        api_key = os.getenv("GOOGLE_API_KEY")
-        genai.configure(api_key=api_key)
+    def __init__(self):
         self.model = genai.GenerativeModel('gemini-pro')
         self.recognizer = sr.Recognizer()
         
