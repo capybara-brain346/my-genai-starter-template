@@ -16,6 +16,9 @@ class AudioResponse(BaseModel):
 async def transcribe_audio(
     audio_file: UploadFile = File(...), language: str = Form("en-US")
 ):
+    """
+    Transcribe audio file to text in the specified language.
+    """
     try:
         audio_content = await audio_file.read()
         response = await audio.transcribe_audio(
@@ -33,6 +36,9 @@ async def analyze_audio(
     language: str = Form("en-US"),
     temperature: float = Form(0.7),
 ):
+    """
+    Analyze audio content based on an optional prompt with configurable parameters.
+    """
     try:
         audio_content = await audio_file.read()
         response = await audio.analyze_audio_content(
@@ -53,6 +59,9 @@ async def summarize_audio(
     language: str = Form("en-US"),
     temperature: float = Form(0.7),
 ):
+    """
+    Generate a concise summary of the audio content with optional length control.
+    """
     try:
         audio_content = await audio_file.read()
         response = await audio.summarize_audio(

@@ -9,7 +9,7 @@ load_dotenv()
 
 
 class GeminiVisionUtils:
-    def __init__(self, api_key: str):
+    def __init__(self):
         self.model = genai.GenerativeModel("gemini-pro-vision")
 
     async def _process_image(
