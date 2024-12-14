@@ -58,26 +58,3 @@ class GeminiUtils:
         except Exception as e:
             print(f"Error generating with context: {str(e)}")
             return ""
-
-
-# Example usage:
-"""
-api_key = "your-api-key"
-gemini = GeminiUtils(api_key)
-
-# Simple text generation
-response = await gemini.generate_text("Write a short poem about AI")
-
-# Chat conversation
-messages = [
-    {"role": "user", "content": "Hello, how are you?"},
-    {"role": "assistant", "content": "I'm doing well, thank you!"},
-    {"role": "user", "content": "What's the weather like?"}
-]
-chat_response = await gemini.generate_structured_chat(messages)
-
-# Generation with context
-context = "The year is 2024 and AI technology is rapidly advancing."
-prompt = "What might be the next breakthrough in AI?"
-contextual_response = await gemini.generate_with_context(prompt, context)
-"""
