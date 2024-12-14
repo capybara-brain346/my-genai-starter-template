@@ -11,6 +11,7 @@ load_dotenv()
 
 class GeminiVisionUtils:
     def __init__(self, api_key: str):
+        api_key = os.getenv("GOOGLE_API_KEY")
         genai.configure(api_key=api_key)
         self.model = genai.GenerativeModel("gemini-pro-vision")
 
@@ -18,6 +19,7 @@ class GeminiVisionUtils:
         self, image_input: Union[str, bytes, BinaryIO, Image.Image]
     ) -> Image.Image:
         try:
+
             def process_base64_string(img_input):
                 base64_data = img_input.split(",")[1]
                 image_data = base64.b64decode(base64_data)
@@ -27,10 +29,12 @@ class GeminiVisionUtils:
                 return Image.open(img_input)
 
             input_handlers = {
-                str: lambda x: process_base64_string(x) if x.startswith("data:image") else process_file_path(x),
+                str: lambda x: process_base64_string(x)
+                if x.startswith("data:image")
+                else process_file_path(x),
                 bytes: lambda x: Image.open(BytesIO(x)),
                 BinaryIO: lambda x: Image.open(x),
-                Image.Image: lambda x: x
+                Image.Image: lambda x: x,
             }
 
             handler = input_handlers.get(type(image_input))
