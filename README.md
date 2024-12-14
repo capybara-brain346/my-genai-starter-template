@@ -1,5 +1,5 @@
-```markdown
-# google-genai-starter-template
+
+# Google Genai Starter Template
 
 A comprehensive FastAPI starter template for working with Google's Gemini AI models, supporting text, image, and audio processing.
 
@@ -172,12 +172,6 @@ isort .
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Google Gemini AI
-- FastAPI framework
-- All contributors
 
 ## Support
 
