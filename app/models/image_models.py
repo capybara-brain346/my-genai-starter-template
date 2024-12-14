@@ -10,7 +10,7 @@ load_dotenv()
 
 class GeminiVisionUtils:
     def __init__(self):
-        self.model = genai.GenerativeModel("gemini-pro-vision")
+        self.model = genai.GenerativeModel("gemini-1.5-flash")
 
     async def _process_image(
         self, image_input: Union[str, bytes, BinaryIO, Image.Image]

@@ -7,7 +7,7 @@ load_dotenv()
 
 class GeminiUtils:
     def __init__(self):
-        self.model = genai.GenerativeModel("gemini-pro")
+        self.model = genai.GenerativeModel("gemini-1.5-flash")
 
     async def generate_text(
         self, prompt: str, temperature: float = 0.7, max_tokens: Optional[int] = None
