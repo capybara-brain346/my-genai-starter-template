@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, UploadFile, File, Form
 from typing import List, Optional
-from app.models.image_models import GeminiVisionUtils
+from src.models.image_models import GeminiVisionUtils
 from pydantic import BaseModel
 
 router = APIRouter(prefix="/api/image", tags=["image"])

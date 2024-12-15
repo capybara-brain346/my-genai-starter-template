@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from typing import List, Dict, Optional
-from app.models.text_models import GeminiUtils
+from src.models.text_models import GeminiUtils
 from pydantic import BaseModel
 
 router = APIRouter(prefix="/api/text", tags=["text"])

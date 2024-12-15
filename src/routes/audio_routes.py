@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, UploadFile, File, Form
 from typing import Optional
-from app.models.audio_models import GeminiAudioUtils
+from src.models.audio_models import GeminiAudioUtils
 from pydantic import BaseModel
 
 router = APIRouter(prefix="/api/audio", tags=["audio"])

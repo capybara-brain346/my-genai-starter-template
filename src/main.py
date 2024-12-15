@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import text_routes, image_routes, audio_routes
+from src.routes import text_routes, image_routes, audio_routes
 
 app = FastAPI(
     title="Gemini AI API",
