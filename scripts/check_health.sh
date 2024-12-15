@@ -28,19 +28,17 @@ echo -e "${YELLOW}Starting Health Check...${NC}"
 echo "=========================="
 
 echo -e "\n${YELLOW}Checking Python Installation:${NC}"
-check_command python3
-PYTHON_VERSION=$(python3 --version 2>&1)
+check_command python
+PYTHON_VERSION=$(python --version 2>&1)
 echo "Python Version: $PYTHON_VERSION"
 
-# Check dependencies
 echo -e "\n${YELLOW}Checking Dependencies:${NC}"
 if [ -f "requirements.txt" ]; then
     print_status "requirements.txt exists" 0
     
-    # Check if pip can import key packages
-    key_packages=("fastapi" "google-generativeai" "uvicorn")
+    key_packages=("fastapi" "google-generativeai")
     for package in "${key_packages[@]}"; do
-        if python3 -c "import $package" 2>/dev/null; then
+        if pip show $package > /dev/null 2>&1; then
             print_status "$package is installed" 0
         else
             print_status "$package is not installed" 1
@@ -50,7 +48,6 @@ else
     print_status "requirements.txt not found" 1
 fi
 
-# Check environment variables
 echo -e "\n${YELLOW}Checking Environment Variables:${NC}"
 if [ -f ".env" ]; then
     print_status ".env file exists" 0
@@ -69,13 +66,11 @@ fi
 
 # Check if FastAPI server can start
 echo -e "\n${YELLOW}Checking FastAPI Server:${NC}"
-if python3 -c "import fastapi" 2>/dev/null; then
-    if pgrep -f "fastapi" > /dev/null; then
-        print_status "FastAPI server is running" 0
-    else
-        print_status "FastAPI server is not running" 1
-        echo -e "${YELLOW}Tip: Start the server using the start_server script${NC}"
-    fi
+if pgrep -f "fastapi" > /dev/null; then
+    print_status "FastAPI server is running" 0
+else
+    print_status "FastAPI server is not running" 1
+    echo -e "${YELLOW}Tip: Start the server using the start_server script${NC}"
 fi
 
 # Check disk space
